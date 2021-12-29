@@ -600,6 +600,14 @@ def cross_validation_framework(metalearner, X, y, k, metalearner_name='', thresh
     
     """
     Performs cross validation according to the specified framework (mode).
+    Some of the most important hyperparameters is the type of framework to use ('stacking' and 'regular').
+    The 'stacking' framework tests different datasets built from different forms of the representation 
+    learning strategy, which tries to build a new feature vector from the anomaly scores assigned by a 
+    set of "base-learners". This framework performs a filtering procedure in which a more accurate and
+    heterogeneous set of anomaly scores is preserved. The 'n_layers' hyperparameter defines the number of
+    times that a new feature vector will be built, then, in each iteration, this new feature vector will
+    be appended to the one filtered in the previous iteration for it to be filtered again. The purpose
+    of adding 'stacking' layers is to end with a better feature vector.
 
     Args:
         model (Object): anomaly detector or classifier.
